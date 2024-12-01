@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; padding: 20px; text-align: center; }
+        button { margin: 10px; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Monster Game!</h1>
+    <div id="gameArea">
+        <button onclick="startGame()">Start Game</button>
+    </div>
+
+    <script>
+        let health = 100;
+        let monsterHealth = 100;
+
+        function startGame() {
+            const userChoice = prompt("Do you want to play? (YES or NO)").toUpperCase();
+            if (userChoice === "YES") {
+                alert("You have entered the game.");
+                game();
+            } else if (userChoice === "NO") {
+                alert("You have decided not to start the game.");
+            } else {
+                alert("Error: You have entered an invalid input.");
+                startGame();
+            }
+        }
+
+        function game() {
+            const userChoice2 = prompt("We will fight a monster. Choose one:\nEnter [1] for Monster 1\nEnter [2] for Monster 2");
+            if (userChoice2 == 1) {
+                monster1();
+            } else if (userChoice2 == 2) {
+                monster2();
+            } else {
+                startGame();
+            }
+        }
+
+        function monster1() {
+            const userChoice3 = prompt("This is a dangerous monster.\nPress [F] to fight or [R] to run").toUpperCase();
+            if (userChoice3 === "F") {
+                alert("Be careful, this monster is dangerous. Your health: " + health);
+                const userChoice4 = prompt("Are you ready? (YES or NO)").toUpperCase();
+                if (userChoice4 === "YES") {
+                    const answer = prompt("Solve: What is the derivative of 2^3?");
+                    if (answer == 24) {
+                        alert("Great, your answer is correct.");
+                        con();
+                    } else {
+                        alert("Your answer is incorrect.");
+                        lost();
+                    }
+                } else {
+                    replayGame();
+                }
+            } else {
+                lost();
+            }
+        }
+
+        function monster2() {
+            alert("This monster is very strong. The only option for survival is to escape.");
+            const userChoice = prompt("Are you ready to escape? (YES or NO)").toUpperCase();
+            if (userChoice === "YES") {
+                const pathChoice = prompt("Choose your path:\n[1] Dangerous path with math problems\n[2] Easier path with one hard puzzle");
+                if (pathChoice == 1) {
+                    const answer = prompt("Solve this: 2 * 8 * 9 + 2?");
+                    if (answer == 146) {
+                        alert("Great, you opened the first door!");
+                        con();
+                    } else {
+                        lost();
+                    }
+                } else {
+                    const answer = prompt("Solve: 2^300 + 3^1000?");
+                    if (answer == "000") {
+                        alert("Great, your answer is correct.");
+                        con();
+                    } else {
+                        lost();
+                    }
+                }
+            } else {
+                endGame();
+            }
+        }
+
+        function lost() {
+            alert("You lost the game. Try again.");
+            replayGame();
+        }
+
+        function replayGame() {
+            const choice = prompt("Do you want to retry? (RETRY or E)").toUpperCase();
+            if (choice === "RETRY") {
+                startGame();
+            } else {
+                endGame();
+            }
+        }
+
+        function con() {
+            alert("Congratulations, you win!");
+            replayGame();
+        }
+
+        function endGame() {
+            alert("Thank you for playing the game. Have a nice day!");
+        }
+    </script>
+</body>
+</html>
